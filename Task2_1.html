@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <style>
+
+*
+{
+    margin: 0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+      body{
+        background-image: url(gradient-dots-background_23-2148884063.jpg);
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="fg"
+      style="
+        background-color: rgb(7, 15, 43);
+        height: 530px;
+        width: 410px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: solid 3px rgb(212, 212, 212);
+        border-radius: 50px;
+      "
+    >
+      <h1 style="color: white; margin-left: 38%; padding-top: 10px">Sign Up</h1>
+      <form style="padding-left: 65px">
+        <label for="name1" style="color: white; font-size: medium">Name: </label
+        ><br />
+        <input
+          style="width: 270px; height: 25px"
+          type="text"
+          name="name1"
+          id="name1"
+        /><span id="nameError" class="error"></span><br /><br />
+        <label for="email" style="color: white; font-size: medium"
+          >Email: </label
+        ><br />
+        <input
+          style="width: 270px; height: 25px"
+          type="email"
+          name="email"
+          id="email"
+        /><span id="emailError" class="error"></span><br /><br />
+        <label for="password" style="color: white; font-size: medium"
+          >Password: </label
+        ><br />
+        <input
+          style="width: 270px; height: 25px"
+          type="password"
+          name="password"
+          id="password"
+        /><span id="passwordError" class="error"></span><br /><br />
+        <label for="gender" style="color: white; font-size: medium"
+          >Gender: </label
+        ><br />
+        <input
+          style="width: 270px; height: 25px"
+          type="text"
+          name="gender"
+          id="gender"
+        />
+        <span id="genderError" class="error"></span><br /><br />
+        <label for="phone" style="color: white; font-size: medium"
+          >Cell ph#: </label
+        ><br />
+        <input
+          style="width: 270px; height: 25px"
+          type="text"
+          name="phone"
+          id="phone"
+        /><span id="phoneError" class="error"></span><br /><br />
+      </form>
+      <br />
+      <div style="padding-left: 60px">
+        <button
+          style="
+            height: 40px;
+            width: 120px;
+            font-style: normal;
+            background-color: white;
+            border-radius: 30px;
+            color: rgb(7, 15, 43);
+            font-size: medium;
+            align-items: center;
+            margin-left: 86px;
+          "
+          onclick="validateSignUp()"
+        >
+          <b>Sign Up</b>
+        </button>
+       
+      </div>
+    </div>
+    <script>
+      function goToPage1() {
+        window.location.href = "Task2.html";
+      }
+      function validateSignUp() {
+        var name = document.getElementById("name1").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var gender = document.getElementById("gender").value;
+        var phone = document.getElementById("phone").value;
+
+        var gender1 = gender.toLowerCase();
+
+        var emailError = document.getElementById("emailError");
+        var nameError = document.getElementById("nameError");
+        var passwordError = document.getElementById("passwordError");
+        var genderError = document.getElementById("genderError");
+        var phoneError = document.getElementById("phoneError");
+
+        // Reset error messages
+        nameError.textContent = "";
+        passwordError.textContent = "";
+        emailError.textContent = "";
+        genderError.textContent = "";
+        phoneError.textContent = "";
+
+        if (
+          name.length == 0 && 
+          password.length == 0 &&
+          email.length == 0 &&
+          gender.length == 0 &&
+          phone.length == 0
+        ) {
+          alert("Please give Input to the form");
+          return false;
+        }
+        // Username validation
+        if (name.length < 3) {
+          alert("Name must be at least 3 characters");
+          return false;
+        }
+
+        // Password validation
+        if (password.length < 8) {
+          alert("Password must be at least 8 characters");
+          return false;
+        }
+
+        // Email validation
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          alert("Invalid email format");
+          return false;
+        }
+
+        // Gender validation
+        if (gender1 != "male" && gender1 != "female") {
+          alert("Please select your gender");
+          return false;
+        }
+
+        if (!/^\d{11}$/.test(phone)) {
+          alert("Invalid phone number");
+          return false;
+        }
+
+        // Form is valid
+        alert("Sign Up Successfully");
+        return true;
+      }
+    </script>
+  </body>
+</html>
