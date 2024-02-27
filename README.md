@@ -28,5 +28,5 @@ Password: Must be at least 8 characters long.
 Gender: Must be either "Male" or "Female".
 Phone Number: Must be a valid 11-digit number.
 
-<h1>Display</h1>
+
 
